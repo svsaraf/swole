@@ -1,0 +1,56 @@
+{% extends "index.html" %}
+
+{% block staticstuff %}
+<script type="text/javascript" src="http://ajax.googleapis.com/
+ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#block').click(function() {
+			$.ajax({
+				url: '/ajaxideadetail/',
+				data: { myid: {{ current_user.pk }} },
+				success: function(data) {
+					$('.newsfeed').prepend(data.workout);
+					var x = "#" + data.personid
+					var currentValue = parseInt($(x).text());
+					var newValue = currentValue + 1;
+					$(x).html(newValue);	
+				},
+			});
+					
+		});
+	});
+</script>
+{% endblock %}
+
+{% block content %}
+<p></p>
+<p></p>
+<div class = newsfeed>
+	{% for workout in newsfeed %}
+		<div class="workout" id="workout{{ workout.pk }}">
+			{{ workout.author.name }} worked out at {{ workout.created_at }}
+		</div>
+	{% endfor %}
+</div>
+<div id=block>
+        Add my workout!
+</div>
+
+<div class=totals>
+	{% for total in totals %}
+		<div class="eachtotal">
+		<div class="personname">
+			{{ total.author.name }}
+		</div>
+		<div class="persontotal" id="{{ total.author.pk }}">
+			{{ total.number }}
+		</div>
+		</div>
+	{% endfor %}
+</div>
+{% endblock %}
+
+
+{% block afterbody %}
+{% endblock %}
