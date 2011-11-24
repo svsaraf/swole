@@ -4,6 +4,8 @@ import sys
 import socket
 import secrets
 
+FORCE_SCRIPT_NAME = '/swole'
+
 if socket.gethostname() == 'web207.webfaction.com':
     DEBUG = TEMPLATE_DEBUG = False
     FACEBOOK_APP_ID = secrets.LOCAL['FBID_PUBLIC']
