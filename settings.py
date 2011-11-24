@@ -1,17 +1,19 @@
-# Django settings for i2 project.
+# Django settings for swole project.
 import os
 import sys
 import socket
+import secrets
 
 if socket.gethostname() == 'web207.webfaction.com':
     DEBUG = TEMPLATE_DEBUG = False
-    FACEBOOK_APP_ID = "150543648366824"
-    FACEBOOK_APP_SECRET = "4b00904811ba796eb967dfbd65584cbb"
+    FACEBOOK_APP_ID = secrets.LOCAL['FBID_PUBLIC']
+    FACEBOOK_APP_SECRET = secrets.LOCAL['FBSECRET_PUBLIC']
 else:
     DEBUG = TEMPLATE_DEBUG = True
-    FACEBOOK_APP_ID = "308654409163989"
-    FACEBOOK_APP_SECRET = "4094229fe28093574a588a5ed55b2a6b"
+    FACEBOOK_APP_ID = secrets.LOCAL['FBID_LOCAL']
+    FACEBOOK_APP_SECRET = secrets.LOCAL['FBSECRET_LOCAL']
 
+#print secrets.LOCAL['FBID_LOCAL']
 
 ADMINS = (
     ('Sanjay Saraf', 'svsaraf90@gmail.com'),
@@ -23,9 +25,9 @@ if socket.gethostname() == 'web207.webfaction.com':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'svsaraf_i2',
-            'USER': 'svsaraf_i2',
-            'PASSWORD': 'sanjay',
+            'NAME': secrets.LOCAL['DB_USER_PUBLIC'],
+            'USER': secrets.LOCAL['DB_USER_PUBLIC'],
+            'PASSWORD': secrets.LOCAL['DB_PASS_PUBLIC'],
             'HOST': '',
             'PORT': '',
         }
@@ -42,7 +44,7 @@ else:
         }
     }
 
-II_VERSION = '0.1'
+SWOLE_VERSION = '1.0'
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -51,7 +53,7 @@ II_VERSION = '0.1'
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/Los_Angeles'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -126,7 +128,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'i2.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -146,7 +148,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     'django.contrib.admindocs',
-    'i2.ideas',
+    'ideas',
     'south',
 )
 

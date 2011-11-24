@@ -1,5 +1,5 @@
 from django.contrib import admin
-from i2.ideas.models import *
+from ideas.models import *
 
 admin.site.register(UserProfile)
 admin.site.register(Workout)

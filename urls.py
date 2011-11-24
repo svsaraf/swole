@@ -1,8 +1,8 @@
 from django.conf.urls.defaults import *
-from i2.ideas import views
+from ideas import views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic.simple import direct_to_template
-from i2.ideas.models import *
+from ideas.models import *
 
 
 # this comment is to make sure github is working.

@@ -1,5 +1,5 @@
 from django.shortcuts import render_to_response
-from i2.ideas.models import *
+from ideas.models import *
 from django.template import RequestContext
 from django import forms
 from django.http import HttpResponseRedirect
