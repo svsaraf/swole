@@ -4,7 +4,7 @@ import sys
 import socket
 import secrets
 
-FORCE_SCRIPT_NAME = '/swole'
+#FORCE_SCRIPT_NAME = '/swole'
 
 if socket.gethostname() == 'web207.webfaction.com':
     DEBUG = TEMPLATE_DEBUG = False
