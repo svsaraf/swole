@@ -4,6 +4,8 @@ import sys
 import socket
 import secrets
 
+sys.path = ['/home/svsaraf/webapps/swole3/swole', '/home/svsaraf/webapps/swole3/swole/ideas', '/home/svsaraf/webapps/swole3/'] + sys.path
+
 #FORCE_SCRIPT_NAME = '/swole'
 
 if socket.gethostname() == 'web207.webfaction.com':
